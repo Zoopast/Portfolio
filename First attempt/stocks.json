@@ -1,0 +1,41 @@
+{
+    "stocks":[
+        {
+            "company": "Microsoft",
+            "price": 100.5,
+            "date": "20/04/2021",
+            "time": "16:45:00"
+        },
+        {
+            "company": "Microsoft",
+            "price": 150.4,
+            "date": "15/04/2022",
+            "time": "20:20:20"
+        },
+        {
+            "company": "Microsoft",
+            "price": 160.4,
+            "date": "15/04/2022",
+            "time": "20:21:00"
+        },
+        {
+            "company": "Microsoft",
+            "price": 161.4,
+            "date": "15/04/2022",
+            "time": "20:21:20"
+        },
+        {
+            "company": "Apple",
+            "price": 155.63,
+            "date": "11/05/2022",
+            "time": "06:10:10"
+        },
+        {
+            "company": "Apple",
+            "price": 160.63,
+            "date": "11/05/2022",
+            "time": "10:10:10"
+        }
+    ]
+
+}

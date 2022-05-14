@@ -1,0 +1,14 @@
+{
+    "companies":[
+        {
+            "companyOwner": "Microsoft Corporation",
+            "companyName": "Microsoft",
+            "currentValue": 266.66
+        },
+        {
+            "companyName": "Apple",
+            "companyOwner": "Apple Inc.",
+            "currentValue": 152.63
+        }
+    ]
+}

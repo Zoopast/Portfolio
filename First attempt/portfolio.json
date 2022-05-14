@@ -1,0 +1,16 @@
+{
+    "portfolio":[
+        {
+            "stockName": "Microsoft",
+            "qty": 0.5,
+            "boughtDate": "20/04/2021",
+            "boughtTime": "20:20:20"
+        },
+        {
+            "stockName": "Apple",
+            "qty": 2,
+            "boughtDate": "11/05/2022",
+            "boughtTime": "10:03:50"
+        }
+    ]
+}
