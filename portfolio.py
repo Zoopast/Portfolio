@@ -1,24 +1,35 @@
-from utils import verifyAndTransformDates
-from dateutil.relativedelta import relativedelta
+from utils import verifyDates
 
 class Portfolio:
     def __init__(self, stocks):
         self.stocks = stocks
 
-    def profit(self, date1: str, date2: str, annualized = False):
-        startDate, endDate = verifyAndTransformDates(date1, date2)
-
+    def profit(self, date1, date2, annualized = False):
+        startDate, endDate = verifyDates(date1, date2)
         if annualized:
+            return self.getAnnualizedReturn(startDate, endDate)
+        else:
+            return self.calculateProfit(startDate, endDate)
+    
+    def getAnnualizedReturn(self, startDate, endDate):
+
+            startCapital, endCapital = self.calculateCapitals(startDate, endDate)
+            revenue = (endCapital - startCapital) / startCapital
+            dateDiff = endDate.year - startDate.year
+            ar = self.getAnnualizedReturnValue(revenue, dateDiff)
+            
+            return round(ar, 2) * 100
+
+    def calculateCapitals(self, startDate, endDate):
             startCapital = 0
             endCapital = 0
             for stock in self.stocks:
                 startCapital += self.stocks[stock].price(startDate)
                 endCapital += self.stocks[stock].price(endDate)
-            revenue = (endCapital - startCapital) / startCapital
-            dateDiff = relativedelta(endDate, startDate)
-            finalAnnualizedRevenue = (((1 + revenue) ** (1 / dateDiff.years)) - 1)
-            return round(finalAnnualizedRevenue, 2)
-        else:
+
+            return startCapital, endCapital
+    
+    def calculateProfit(self, startDate, endDate):
             profit = 0
             for stock in self.stocks:
                 startValue = self.stocks[stock].price(startDate)
@@ -27,3 +38,11 @@ class Portfolio:
                     profit += endValue - startValue
             
             return profit
+    
+    def getAnnualizedReturnValue(self, revenue, dateDiff):
+        if dateDiff == 0:
+            return 0
+        #Math magic
+        return (((1 + revenue)**(1 / dateDiff)) - 1)
+
+        

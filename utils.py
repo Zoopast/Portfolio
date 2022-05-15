@@ -1,29 +1,17 @@
-
 import datetime
 import random
-
 from data import FAANG, DAYS_TO_TEST, STOCK_MAX_VALUE
 
-#Transform the two dates into a datetime variable,
-#After that, checks if the first date is after the second date, if so, swap them
-def verifyAndTransformDates(d1: str, d2: str):
-    startDMY = d1.split("/")
-    endDMY = d2.split("/")
-    start = datetime.date(day=int(startDMY[0]), month=int(startDMY[1]), year=int(startDMY[2]))
-    end = datetime.date(day = int(endDMY[0]), month = int(endDMY[1]), year = int(endDMY[2]))
-
-        #if start date is after end date, swap them
-    if start > end:
-        start, end = end, start
-        
-    return start, end
+#Checks if the first date is after the second date, if so, swap them
+def verifyDates(d1, d2):
+    if d1 > d2:
+        d1, d2 = d2, d1
+    return d1, d2
 
 #Choose a random amount of companies to be part of the portfolio
 def stocksForPorfolio():
     qtyOfStocks = random.randint(1, len(FAANG))
-    portfolioStocks = []
-    for i in range(qtyOfStocks):
-        portfolioStocks.append(FAANG[i])
+    portfolioStocks = FAANG[:qtyOfStocks]
 
     return portfolioStocks   
 
@@ -36,5 +24,8 @@ def generateValues():
         dates[date] = random.randint(0, STOCK_MAX_VALUE)
     return dates
 
-    
+def getDates():
+    date1 = datetime.datetime.now().date()
+    date2 = date1 - datetime.timedelta(days=DAYS_TO_TEST)
+    return date1, date2
 
