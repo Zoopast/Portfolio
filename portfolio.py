@@ -12,7 +12,10 @@ class Portfolio:
             return self.calculateProfit(startDate, endDate)
     
     def getAnnualizedReturn(self, startDate, endDate):
-
+            """
+                Calculates and returns the 
+                annualized return between 2 dates.
+            """
             startCapital, endCapital = self.calculateCapitals(startDate, endDate)
             revenue = (endCapital - startCapital) / startCapital
             dateDiff = endDate.year - startDate.year
